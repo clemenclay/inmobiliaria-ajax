@@ -15,8 +15,12 @@ import ContactsIndex from './modules/Contacts'
 import ContactsSingle from './modules/Contacts/single'
 import PropiedadesIndex from './modules/Propiedades'
 import PropiedadesSingle from './modules/Propiedades/single'
-import GaleriaIndex from './modules/Galeria'
-import GaleriaSingle from './modules/Galeria/single'
+import MonedasIndex from './modules/Monedas'
+import MonedasSingle from './modules/Monedas/single'
+import TipooperacionsIndex from './modules/Tipooperacions'
+import TipooperacionsSingle from './modules/Tipooperacions/single'
+import BarriosIndex from './modules/Barrios'
+import BarriosSingle from './modules/Barrios/single'
 
 Vue.use(Vuex)
 
@@ -39,8 +43,12 @@ export default new Vuex.Store({
         ContactsSingle,
         PropiedadesIndex,
         PropiedadesSingle,
-        GaleriaIndex,
-        GaleriaSingle,
+        MonedasIndex,
+        MonedasSingle,
+        TipooperacionsIndex,
+        TipooperacionsSingle,
+        BarriosIndex,
+        BarriosSingle,
     },
     strict: debug,
 })

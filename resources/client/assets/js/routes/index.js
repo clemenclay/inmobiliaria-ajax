@@ -26,10 +26,18 @@ import PropiedadesIndex from '../components/cruds/Propiedades/Index.vue'
 import PropiedadesCreate from '../components/cruds/Propiedades/Create.vue'
 import PropiedadesShow from '../components/cruds/Propiedades/Show.vue'
 import PropiedadesEdit from '../components/cruds/Propiedades/Edit.vue'
-import GaleriaIndex from '../components/cruds/Galeria/Index.vue'
-import GaleriaCreate from '../components/cruds/Galeria/Create.vue'
-import GaleriaShow from '../components/cruds/Galeria/Show.vue'
-import GaleriaEdit from '../components/cruds/Galeria/Edit.vue'
+import MonedasIndex from '../components/cruds/Monedas/Index.vue'
+import MonedasCreate from '../components/cruds/Monedas/Create.vue'
+import MonedasShow from '../components/cruds/Monedas/Show.vue'
+import MonedasEdit from '../components/cruds/Monedas/Edit.vue'
+import TipooperacionsIndex from '../components/cruds/Tipooperacions/Index.vue'
+import TipooperacionsCreate from '../components/cruds/Tipooperacions/Create.vue'
+import TipooperacionsShow from '../components/cruds/Tipooperacions/Show.vue'
+import TipooperacionsEdit from '../components/cruds/Tipooperacions/Edit.vue'
+import BarriosIndex from '../components/cruds/Barrios/Index.vue'
+import BarriosCreate from '../components/cruds/Barrios/Create.vue'
+import BarriosShow from '../components/cruds/Barrios/Show.vue'
+import BarriosEdit from '../components/cruds/Barrios/Edit.vue'
 
 Vue.use(VueRouter)
 
@@ -59,10 +67,18 @@ const routes = [
     { path: '/propiedades/create', component: PropiedadesCreate, name: 'propiedades.create' },
     { path: '/propiedades/:id', component: PropiedadesShow, name: 'propiedades.show' },
     { path: '/propiedades/:id/edit', component: PropiedadesEdit, name: 'propiedades.edit' },
-    { path: '/galerias', component: GaleriaIndex, name: 'galerias.index' },
-    { path: '/galerias/create', component: GaleriaCreate, name: 'galerias.create' },
-    { path: '/galerias/:id', component: GaleriaShow, name: 'galerias.show' },
-    { path: '/galerias/:id/edit', component: GaleriaEdit, name: 'galerias.edit' },
+    { path: '/monedas', component: MonedasIndex, name: 'monedas.index' },
+    { path: '/monedas/create', component: MonedasCreate, name: 'monedas.create' },
+    { path: '/monedas/:id', component: MonedasShow, name: 'monedas.show' },
+    { path: '/monedas/:id/edit', component: MonedasEdit, name: 'monedas.edit' },
+    { path: '/tipooperacions', component: TipooperacionsIndex, name: 'tipooperacions.index' },
+    { path: '/tipooperacions/create', component: TipooperacionsCreate, name: 'tipooperacions.create' },
+    { path: '/tipooperacions/:id', component: TipooperacionsShow, name: 'tipooperacions.show' },
+    { path: '/tipooperacions/:id/edit', component: TipooperacionsEdit, name: 'tipooperacions.edit' },
+    { path: '/barrios', component: BarriosIndex, name: 'barrios.index' },
+    { path: '/barrios/create', component: BarriosCreate, name: 'barrios.create' },
+    { path: '/barrios/:id', component: BarriosShow, name: 'barrios.show' },
+    { path: '/barrios/:id/edit', component: BarriosEdit, name: 'barrios.edit' },
 ]
 
 export default new VueRouter({

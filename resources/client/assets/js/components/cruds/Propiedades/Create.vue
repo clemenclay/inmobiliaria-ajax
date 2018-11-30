@@ -1,7 +1,7 @@
 <template>
     <section class="content-wrapper" style="min-height: 960px;">
         <section class="content-header">
-            <h1>propiedades</h1>
+            <h1>Propiedades</h1>
         </section>
 
         <section class="content">
@@ -21,15 +21,110 @@
 
                             <div class="box-body">
                                 <div class="form-group">
-                                    <label for="propiedades">Propiedades</label>
+                                    <div class="checkbox">
+                                        <label>
+                                            <input
+                                                    type="checkbox"
+                                                    name="publicado"
+                                                    :value="item.publicado"
+                                                    :checked="item.publicado == true"
+                                                    @change="updatePublicado"
+                                                    >
+                                            Publicado
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="titulo">Titulo *</label>
                                     <input
                                             type="text"
                                             class="form-control"
-                                            name="propiedades"
-                                            placeholder="Enter Propiedades"
-                                            :value="item.propiedades"
-                                            @input="updatePropiedades"
+                                            name="titulo"
+                                            placeholder="Enter Titulo *"
+                                            :value="item.titulo"
+                                            @input="updateTitulo"
                                             >
+                                </div>
+                                <div class="form-group">
+                                    <label for="descripcion">Descripcion *</label>
+                                    <input
+                                            type="text"
+                                            class="form-control"
+                                            name="descripcion"
+                                            placeholder="Enter Descripcion *"
+                                            :value="item.descripcion"
+                                            @input="updateDescripcion"
+                                            >
+                                </div>
+                                <div class="form-group">
+                                    <label for="imagen">Imagen</label>
+                                    <input
+                                            type="file"
+                                            class="form-control"
+                                            @change="updateImagen"
+                                            multiple="multiple"
+                                    >
+                                    <ul v-if="item.imagen || item.uploaded_imagen" class="list-unstyled">
+                                        <li v-for="imagen in item.uploaded_imagen">
+                                            {{ imagen.file_name }}
+                                            <button class="btn btn-xs btn-danger"
+                                                    type="button"
+                                                    @click="removeUploadedImagen($event, imagen.id);"
+                                            >
+                                                Remove file
+                                            </button>
+                                        </li>
+                                        <li v-for="(imagen, index) in item.imagen">
+                                            {{ imagen.name }}
+                                            <button class="btn btn-xs btn-danger"
+                                                    type="button"
+                                                    @click="removeImagen($event, index);"
+                                            >
+                                                Remove file
+                                            </button>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="form-group">
+                                    <label for="precio">Precio *</label>
+                                    <input
+                                            type="text"
+                                            class="form-control"
+                                            name="precio"
+                                            placeholder="Enter Precio *"
+                                            :value="item.precio"
+                                            @input="updatePrecio"
+                                            >
+                                </div>
+                                <div class="form-group">
+                                    <label for="moneda">Moneda</label>
+                                    <v-select
+                                            name="moneda"
+                                            label="moneda"
+                                            @input="updateMoneda"
+                                            :value="item.moneda"
+                                            :options="monedasAll"
+                                            />
+                                </div>
+                                <div class="form-group">
+                                    <label for="barrio">Barrio *</label>
+                                    <v-select
+                                            name="barrio"
+                                            label="barrio"
+                                            @input="updateBarrio"
+                                            :value="item.barrio"
+                                            :options="barriosAll"
+                                            />
+                                </div>
+                                <div class="form-group">
+                                    <label for="operacion">Operacion</label>
+                                    <v-select
+                                            name="operacion"
+                                            label="tipooperacion"
+                                            @input="updateOperacion"
+                                            :value="item.operacion"
+                                            :options="tipooperacionsAll"
+                                            />
                                 </div>
                             </div>
 
@@ -61,18 +156,75 @@ export default {
         }
     },
     computed: {
-        ...mapGetters('PropiedadesSingle', ['item', 'loading'])
+        ...mapGetters('PropiedadesSingle', ['item', 'loading', 'monedasAll', 'barriosAll', 'tipooperacionsAll'])
     },
     created() {
-        // Code ...
+        this.fetchMonedasAll(),
+        this.fetchBarriosAll(),
+        this.fetchTipooperacionsAll()
     },
     destroyed() {
         this.resetState()
     },
     methods: {
-        ...mapActions('PropiedadesSingle', ['storeData', 'resetState', 'setPropiedades']),
-        updatePropiedades(e) {
-            this.setPropiedades(e.target.value)
+        ...mapActions('PropiedadesSingle', ['storeData', 'resetState', 'setPublicado', 'setTitulo', 'setDescripcion', 'setImagen', 'destroyImagen', 'destroyUploadedImagen', 'setPrecio', 'setMoneda', 'setBarrio', 'setOperacion', 'fetchMonedasAll', 'fetchBarriosAll', 'fetchTipooperacionsAll']),
+        updatePublicado(e) {
+            this.setPublicado(e.target.checked)
+        },
+        updateTitulo(e) {
+            this.setTitulo(e.target.value)
+        },
+        updateDescripcion(e) {
+            this.setDescripcion(e.target.value)
+        },
+        removeImagen(e, id) {
+            this.$swal({
+                title: 'Are you sure?',
+                text: "To fully delete the file submit the form.",
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Delete',
+                confirmButtonColor: '#dd4b39',
+                focusCancel: true,
+                reverseButtons: true
+            }).then(result => {
+                if (typeof result.dismiss === "undefined") {
+                    this.destroyImagen(id);
+                }
+            })
+        },
+        updateImagen(e) {
+            this.setImagen(e.target.files);
+            this.$forceUpdate();
+        },
+        removeUploadedImagen (e, id) {
+        this.$swal({
+          title: 'Are you sure ? ',
+          text: "To fully delete the file submit the form.",
+          type: 'warning',
+          showCancelButton: true,
+          confirmButtonText: 'Delete',
+          confirmButtonColor: '#dd4b39',
+          focusCancel: true,
+          reverseButtons: true
+        }).
+        then(result => {
+            if (typeof result.dismiss === "undefined") {
+                this.destroyUploadedImagen(id);
+            }
+        })
+        },
+        updatePrecio(e) {
+            this.setPrecio(e.target.value)
+        },
+        updateMoneda(value) {
+            this.setMoneda(value)
+        },
+        updateBarrio(value) {
+            this.setBarrio(value)
+        },
+        updateOperacion(value) {
+            this.setOperacion(value)
         },
         submitForm() {
             this.storeData()

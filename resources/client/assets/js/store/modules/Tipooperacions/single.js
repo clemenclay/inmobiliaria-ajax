@@ -2,9 +2,7 @@ function initialState() {
     return {
         item: {
             id: null,
-            nombre: null,
-            imagen: [],
-            uploaded_imagen: [],
+            tipooperacion: null,
         },
         
         
@@ -42,9 +40,9 @@ const actions = {
                 }
             }
 
-            params.set('uploaded_imagen', state.item.uploaded_imagen.map(o => o['id']))
+            
 
-            axios.post('/api/v1/galerias', params)
+            axios.post('/api/v1/tipooperacions', params)
                 .then(response => {
                     commit('resetState')
                     resolve()
@@ -88,9 +86,9 @@ const actions = {
                 }
             }
 
-            params.set('uploaded_imagen', state.item.uploaded_imagen.map(o => o['id']))
+            
 
-            axios.post('/api/v1/galerias/' + state.item.id, params)
+            axios.post('/api/v1/tipooperacions/' + state.item.id, params)
                 .then(response => {
                     commit('setItem', response.data.data)
                     resolve()
@@ -112,7 +110,7 @@ const actions = {
         })
     },
     fetchData({ commit, dispatch }, id) {
-        axios.get('/api/v1/galerias/' + id)
+        axios.get('/api/v1/tipooperacions/' + id)
             .then(response => {
                 commit('setItem', response.data.data)
             })
@@ -120,17 +118,8 @@ const actions = {
         
     },
     
-    setNombre({ commit }, value) {
-        commit('setNombre', value)
-    },
-    setImagen({ commit }, value) {
-        commit('setImagen', value)
-    },
-    destroyImagen({ commit }, value) {
-        commit('destroyImagen', value)
-    },
-    destroyUploadedImagen({ commit }, value) {
-        commit('destroyUploadedImagen', value)
+    setTipooperacion({ commit }, value) {
+        commit('setTipooperacion', value)
     },
     resetState({ commit }) {
         commit('resetState')
@@ -141,31 +130,8 @@ const mutations = {
     setItem(state, item) {
         state.item = item
     },
-    setNombre(state, value) {
-        state.item.nombre = value
-    },
-    setImagen(state, value) {
-        for (let i in value) {
-            let imagen = value[i];
-            if (typeof imagen === "object") {
-                state.item.imagen.push(imagen);
-            }
-        }
-    },
-    destroyImagen(state, value) {
-        for (let i in state.item.imagen) {
-            if (i == value) {
-                state.item.imagen.splice(i, 1);
-            }
-        }
-    },
-    destroyUploadedImagen(state, value) {
-        for (let i in state.item.uploaded_imagen) {
-            let data = state.item.uploaded_imagen[i];
-            if (data.id === value) {
-                state.item.uploaded_imagen.splice(i, 1);
-            }
-        }
+    setTipooperacion(state, value) {
+        state.item.tipooperacion = value
     },
     
     

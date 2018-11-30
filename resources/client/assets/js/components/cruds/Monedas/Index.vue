@@ -1,7 +1,7 @@
 <template>
     <section class="content-wrapper" style="min-height: 960px;">
         <section class="content-header">
-            <h1>Galeria</h1>
+            <h1>Moneda</h1>
         </section>
 
         <section class="content">
@@ -60,22 +60,21 @@ import DatatableActions from '../../dtmodules/DatatableActions'
 import DatatableSingle from '../../dtmodules/DatatableSingle'
 import DatatableList from '../../dtmodules/DatatableList'
 import DatatableCheckbox from '../../dtmodules/DatatableCheckbox'
-import DatatableImagenField from './dtmodules/DatatableImagenField'
+
 
 export default {
     data() {
         return {
             columns: [
                 { title: '#', field: 'id', sortable: true, colStyle: 'width: 50px;' },
-                { title: 'Nombre', field: 'nombre', sortable: true },
-                { title: 'Imagen', tdComp: DatatableImagenField, sortable: false },
+                { title: 'Moneda', field: 'moneda', sortable: true },
                 { title: 'Actions', tdComp: DatatableActions, visible: true, thClass: 'text-right', tdClass: 'text-right', colStyle: 'width: 130px;' }
             ],
             query: { sort: 'id', order: 'desc' },
             xprops: {
-                module: 'GaleriaIndex',
-                route: 'galerias',
-                permission_prefix: 'galerium_'
+                module: 'MonedasIndex',
+                route: 'monedas',
+                permission_prefix: 'moneda_'
             }
         }
     },
@@ -87,7 +86,7 @@ export default {
         this.resetState()
     },
     computed: {
-        ...mapGetters('GaleriaIndex', ['data', 'total', 'loading', 'relationships']),
+        ...mapGetters('MonedasIndex', ['data', 'total', 'loading', 'relationships']),
     },
     watch: {
         query: {
@@ -98,7 +97,7 @@ export default {
         }
     },
     methods: {
-        ...mapActions('GaleriaIndex', ['fetchData', 'setQuery', 'resetState']),
+        ...mapActions('MonedasIndex', ['fetchData', 'setQuery', 'resetState']),
     }
 }
 </script>

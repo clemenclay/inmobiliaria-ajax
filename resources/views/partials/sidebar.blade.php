@@ -66,15 +66,38 @@
             </li>
             <li v-if="$can('propiedade_access')">
                 <router-link :to="{ name: 'propiedades.index' }">
-                    <i class="fa fa-home"></i>
+                    <i class="fa fa-building"></i>
                     <span>@lang('quickadmin.propiedades.title')</span>
                 </router-link>
             </li>
-            <li v-if="$can('galerium_access')">
-                <router-link :to="{ name: 'galerias.index' }">
+            <li class="treeview" v-if="$can('detalles_propiedad_access')">
+                <a href="#">
                     <i class="fa fa-gears"></i>
-                    <span>@lang('quickadmin.galeria.title')</span>
-                </router-link>
+                    <span>@lang('quickadmin.detalles-propiedad.title')</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li v-if="$can('moneda_access')">
+                        <router-link :to="{ name: 'monedas.index' }">
+                            <i class="fa fa-dollar"></i>
+                            <span>@lang('quickadmin.moneda.title')</span>
+                        </router-link>
+                    </li>
+                    <li v-if="$can('tipooperacion_access')">
+                        <router-link :to="{ name: 'tipooperacions.index' }">
+                            <i class="fa fa-align-justify"></i>
+                            <span>@lang('quickadmin.tipooperacion.title')</span>
+                        </router-link>
+                    </li>
+                    <li v-if="$can('barrio_access')">
+                        <router-link :to="{ name: 'barrios.index' }">
+                            <i class="fa fa-gears"></i>
+                            <span>@lang('quickadmin.barrio.title')</span>
+                        </router-link>
+                    </li>
+                </ul>
             </li>
 
             <li>

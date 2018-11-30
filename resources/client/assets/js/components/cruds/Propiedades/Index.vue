@@ -1,7 +1,7 @@
 <template>
     <section class="content-wrapper" style="min-height: 960px;">
         <section class="content-header">
-            <h1>propiedades</h1>
+            <h1>Propiedades</h1>
         </section>
 
         <section class="content">
@@ -60,14 +60,21 @@ import DatatableActions from '../../dtmodules/DatatableActions'
 import DatatableSingle from '../../dtmodules/DatatableSingle'
 import DatatableList from '../../dtmodules/DatatableList'
 import DatatableCheckbox from '../../dtmodules/DatatableCheckbox'
-
+import DatatableImagenField from './dtmodules/DatatableImagenField'
 
 export default {
     data() {
         return {
             columns: [
                 { title: '#', field: 'id', sortable: true, colStyle: 'width: 50px;' },
-                { title: 'Propiedades', field: 'propiedades', sortable: true },
+                { title: 'Publicado', field: 'publicado', tdComp: DatatableCheckbox, colStyle: 'width: 50px;' },
+                { title: 'Titulo', field: 'titulo', sortable: true },
+                { title: 'Descripcion', field: 'descripcion', sortable: true },
+                { title: 'Imagen', tdComp: DatatableImagenField, sortable: false },
+                { title: 'Precio', field: 'precio', sortable: true },
+                { title: 'Moneda', field: 'moneda', tdComp: DatatableSingle },
+                { title: 'Barrio', field: 'barrio', tdComp: DatatableSingle },
+                { title: 'Operacion', field: 'operacion', tdComp: DatatableSingle },
                 { title: 'Actions', tdComp: DatatableActions, visible: true, thClass: 'text-right', tdClass: 'text-right', colStyle: 'width: 130px;' }
             ],
             query: { sort: 'id', order: 'desc' },

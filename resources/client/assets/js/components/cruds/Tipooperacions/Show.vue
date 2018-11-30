@@ -1,7 +1,7 @@
 <template>
     <section class="content-wrapper" style="min-height: 960px;">
         <section class="content-header">
-            <h1>Galeria</h1>
+            <h1>Tipo operacion</h1>
         </section>
 
         <section class="content">
@@ -26,12 +26,8 @@
                                             <td>{{ item.id }}</td>
                                         </tr>
                                         <tr>
-                                            <th>Nombre</th>
-                                            <td>{{ item.nombre }}</td>
-                                            </tr>
-                                        <tr>
-                                            <th>Imagen</th>
-                                            <td v-html="item.imagen_link"></td>
+                                            <th>Tipooperacion</th>
+                                            <td>{{ item.tipooperacion }}</td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -62,7 +58,7 @@ export default {
         this.resetState()
     },
     computed: {
-        ...mapGetters('GaleriaSingle', ['item'])
+        ...mapGetters('TipooperacionsSingle', ['item'])
     },
     watch: {
         "$route.params.id": function() {
@@ -71,7 +67,7 @@ export default {
         }
     },
     methods: {
-        ...mapActions('GaleriaSingle', ['fetchData', 'resetState'])
+        ...mapActions('TipooperacionsSingle', ['fetchData', 'resetState'])
     }
 }
 </script>

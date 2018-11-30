@@ -10,6 +10,7 @@ use App\Http\Requests\Admin\UpdatePropiedadesRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 
+use App\Http\Controllers\Traits\FileUploadTrait;
 
 
 class PropiedadesController extends Controller
@@ -18,7 +19,7 @@ class PropiedadesController extends Controller
     {
         
 
-        return new PropiedadeResource(Propiedade::with([])->get());
+        return new PropiedadeResource(Propiedade::with(['moneda', 'barrio', 'operacion'])->get());
     }
 
     public function show($id)
@@ -27,7 +28,7 @@ class PropiedadesController extends Controller
             return abort(401);
         }
 
-        $propiedade = Propiedade::with([])->findOrFail($id);
+        $propiedade = Propiedade::with(['moneda', 'barrio', 'operacion'])->findOrFail($id);
 
         return new PropiedadeResource($propiedade);
     }
@@ -40,7 +41,11 @@ class PropiedadesController extends Controller
 
         $propiedade = Propiedade::create($request->all());
         
-        
+        if ($request->hasFile('imagen')) {
+            foreach ($request->file('imagen') as $key => $file) {
+                $propiedade->addMedia($file)->toMediaCollection('imagen');
+            }
+        }
 
         return (new PropiedadeResource($propiedade))
             ->response()
@@ -56,8 +61,17 @@ class PropiedadesController extends Controller
         $propiedade = Propiedade::findOrFail($id);
         $propiedade->update($request->all());
         
-        
-        
+        $filesInfo = explode(',', $request->input('uploaded_imagen'));
+        foreach ($propiedade->getMedia('imagen') as $file) {
+            if (! in_array($file->id, $filesInfo)) {
+                $file->delete();
+            }
+        }
+        if ($request->hasFile('imagen')) {
+            foreach ($request->file('imagen') as $key => $file) {
+                $propiedade->addMedia($file)->toMediaCollection('imagen');
+            }
+        }
 
         return (new PropiedadeResource($propiedade))
             ->response()

@@ -1,7 +1,7 @@
 <template>
     <section class="content-wrapper" style="min-height: 960px;">
         <section class="content-header">
-            <h1>propiedades</h1>
+            <h1>Propiedades</h1>
         </section>
 
         <section class="content">
@@ -26,9 +26,49 @@
                                             <td>{{ item.id }}</td>
                                         </tr>
                                         <tr>
-                                            <th>Propiedades</th>
-                                            <td>{{ item.propiedades }}</td>
+                                            <th>Publicado</th>
+                                            <td>{{ item.publicado }}</td>
                                             </tr>
+                                        <tr>
+                                            <th>Titulo</th>
+                                            <td>{{ item.titulo }}</td>
+                                            </tr>
+                                        <tr>
+                                            <th>Descripcion</th>
+                                            <td>{{ item.descripcion }}</td>
+                                            </tr>
+                                        <tr>
+                                            <th>Imagen</th>
+                                            <td v-html="item.imagen_link"></td>
+                                            </tr>
+                                        <tr>
+                                            <th>Precio</th>
+                                            <td>{{ item.precio }}</td>
+                                            </tr>
+                                        <tr>
+                                            <th>Moneda</th>
+                                            <td>
+                                                <span class="label label-info" v-if="item.moneda !== null">
+                                                    {{ item.moneda.moneda }}
+                                                </span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>Barrio</th>
+                                            <td>
+                                                <span class="label label-info" v-if="item.barrio !== null">
+                                                    {{ item.barrio.barrio }}
+                                                </span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>Operacion</th>
+                                            <td>
+                                                <span class="label label-info" v-if="item.operacion !== null">
+                                                    {{ item.operacion.tipooperacion }}
+                                                </span>
+                                            </td>
+                                        </tr>
                                         </tbody>
                                     </table>
                                 </div>

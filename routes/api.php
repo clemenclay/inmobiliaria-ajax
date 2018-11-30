@@ -9,5 +9,7 @@ Route::group(['prefix' => '/v1', 'middleware' => ['auth:api'], 'namespace' => 'A
     Route::apiResource('contact-companies', 'ContactCompaniesController');
     Route::apiResource('contacts', 'ContactsController');
     Route::apiResource('propiedades', 'PropiedadesController');
-    Route::apiResource('galerias', 'GaleriasController');
+    Route::apiResource('monedas', 'MonedasController');
+    Route::apiResource('tipooperacions', 'TipooperacionsController');
+    Route::apiResource('barrios', 'BarriosController');
 });

@@ -1,10 +1,10 @@
 <?php
 namespace App\Http\Requests\Admin;
 
-use App\Galerium;
+use App\Barrio;
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreGaleriasRequest extends FormRequest
+class StoreBarriosRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,6 +23,6 @@ class StoreGaleriasRequest extends FormRequest
      */
     public function rules()
     {
-        return Galerium::storeValidation($this);
+        return Barrio::storeValidation($this);
     }
 }

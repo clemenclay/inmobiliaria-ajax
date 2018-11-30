@@ -13,7 +13,7 @@ class PropiedadeSeed extends Seeder
     {
         $items = [
             
-            ['id' => 1, 'propiedades' => 'cvx',],
+            ['id' => 1, 'publicado' => 1, 'titulo' => 'asdasd', 'descripcion' => 'asdasdasdasdasddasdasdasd', 'precio' => '234324.00', 'moneda_id' => 1, 'barrio_id' => 1, 'operacion_id' => 1,],
 
         ];
 

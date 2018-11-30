@@ -2,7 +2,9 @@ function initialState() {
     return {
         all: [],
         relationships: {
-            
+            'moneda': 'moneda',
+            'barrio': 'barrio',
+            'operacion': 'tipooperacion',
         },
         query: {},
         loading: false

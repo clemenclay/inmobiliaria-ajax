@@ -28,7 +28,7 @@ const actions = {
     fetchData({ commit, state }) {
         commit('setLoading', true)
 
-        axios.get('/api/v1/galerias')
+        axios.get('/api/v1/detalles-propiedads')
             .then(response => {
                 commit('setAll', response.data.data)
             })
@@ -42,7 +42,7 @@ const actions = {
             })
     },
     destroyData({ commit, state }, id) {
-        axios.delete('/api/v1/galerias/' + id)
+        axios.delete('/api/v1/detalles-propiedads/' + id)
             .then(response => {
                 commit('setAll', state.all.filter((item) => {
                     return item.id != id

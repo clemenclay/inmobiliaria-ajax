@@ -1,10 +1,10 @@
 <?php
 namespace App\Http\Requests\Admin;
 
-use App\Galerium;
+use App\Moneda;
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateGaleriasRequest extends FormRequest
+class StoreMonedasRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,6 +23,6 @@ class UpdateGaleriasRequest extends FormRequest
      */
     public function rules()
     {
-        return Galerium::updateValidation($this);
+        return Moneda::storeValidation($this);
     }
 }

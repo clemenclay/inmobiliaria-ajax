@@ -8,8 +8,14 @@ return [
 		'contact-management' => [		'title' => 'Contact management',		'fields' => [		],	],
 		'contact-companies' => [		'title' => 'Companies',		'fields' => [			'name' => 'Company name',			'address' => 'Address',			'website' => 'Website',			'email' => 'Email',		],	],
 		'contacts' => [		'title' => 'Contactos',		'fields' => [			'company' => 'Compañía',			'first-name' => 'Nombre',			'last-name' => 'Apellido',			'phone1' => 'Teléfono 1',			'phone2' => 'Teléfono 2',			'email' => 'Correo',			'skype' => 'Skype',			'address' => 'Dirección',		],	],
-		'propiedades' => [		'title' => 'propiedades',		'fields' => [			'propiedades' => 'Propiedades',		],	],
-		'galeria' => [		'title' => 'Galeria',		'fields' => [			'nombre' => 'Nombre',			'imagen' => 'Imagen',		],	],
+		'propiedades' => [		'title' => 'propiedades',		'fields' => [		],	],
+		'galeria' => [		'title' => 'Galeria',		'fields' => [		],	],
+		'propiedades' => [		'title' => 'Propiedades',		'fields' => [			'publicado' => 'Publicado',			'titulo' => 'Titulo',			'descripcion' => 'Descripcion',			'imagen' => 'Imagen',			'precio' => 'Precio',			'moneda' => 'Moneda',			'barrio' => 'Barrio',			'operacion' => 'Operacion',		],	],
+		'moneda' => [		'title' => 'Moneda',		'fields' => [			'moneda' => 'Moneda',		],	],
+		'tipooperacion' => [		'title' => 'Tipo operacion',		'fields' => [			'tipooperacion' => 'Tipooperacion',		],	],
+		'detalles-propiedad' => [		'title' => 'Detalles propiedad',		'fields' => [		],	],
+		'detalles-propiedad' => [		'title' => 'Detalles propiedad',		'fields' => [		],	],
+		'barrio' => [		'title' => 'Barrio',		'fields' => [			'barrio' => 'Barrio',		],	],
 	'qa_create' => 'Crear',
 	'qa_save' => 'Guardar',
 	'qa_edit' => 'Editar',
