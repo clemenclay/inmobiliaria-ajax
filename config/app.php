@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => 'Inmobiliariavue',
+    'name' => env('APP_NAME', 'Laravel'),
 
     /*
     |--------------------------------------------------------------------------
@@ -52,7 +52,9 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://127.0.0.1:8000'),
+    'url' => env('APP_URL', 'http://localhost'),
+
+    'asset_url' => env('ASSET_URL', null),
 
     /*
     |--------------------------------------------------------------------------
@@ -67,22 +69,6 @@ return [
 
     'timezone' => 'UTC',
 
-        /*
-     |--------------------------------------------------------------------------
-     | Application Date Format
-     |--------------------------------------------------------------------------
-     |
-     | Here you may specify the default date format for your application, which
-     | will be used with date and date-time functions.
-     |
-     */
-
-    'date_format' => 'd-m-Y',
-    'date_format_js' => 'dd-mm-yy',
-    'date_format_moment' => 'DD-MM-YYYY',
-    'time_format_moment' => 'HH:mm:ss',
-    'datetime_format_moment' => 'DD-MM-YYYY HH:mm:ss',
-
     /*
     |--------------------------------------------------------------------------
     | Application Locale Configuration
@@ -94,7 +80,7 @@ return [
     |
     */
 
-    'locale' => 'es',
+    'locale' => 'en',
 
     /*
     |--------------------------------------------------------------------------
@@ -108,6 +94,19 @@ return [
     */
 
     'fallback_locale' => 'en',
+
+    /*
+    |--------------------------------------------------------------------------
+    | Faker Locale
+    |--------------------------------------------------------------------------
+    |
+    | This locale will be used by the Faker PHP library when generating fake
+    | data for your database seeds. For example, this will be used to get
+    | localized telephone numbers, street address information and more.
+    |
+    */
+
+    'faker_locale' => 'en_US',
 
     /*
     |--------------------------------------------------------------------------
@@ -166,8 +165,6 @@ return [
         /*
          * Package Service Providers...
          */
-        Spatie\MediaLibrary\MediaLibraryServiceProvider::class,
-        
 
         /*
          * Application Service Providers...
@@ -226,9 +223,7 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-        
-    ],
 
-    
+    ],
 
 ];
